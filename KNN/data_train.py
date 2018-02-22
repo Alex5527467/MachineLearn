@@ -7,8 +7,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 from sklearn import preprocessing
 from sklearn import neighbors
-from sklearn.svm import SVC
-from sklearn.neighbors import KDTree 
+
+#from sklearn.neighbors import KDTree 
 #定义kNN分类模型
 from matplotlib.colors import ListedColormap
 model = neighbors.KNeighborsClassifier(n_neighbors=5, n_jobs=1) # 分类
