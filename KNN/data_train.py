@@ -11,7 +11,7 @@ from sklearn import neighbors
 #from sklearn.neighbors import KDTree 
 #定义kNN分类模型
 from matplotlib.colors import ListedColormap
-model = neighbors.KNeighborsClassifier(n_neighbors=5, n_jobs=1) # 分类
+model = neighbors.KNeighborsClassifier(n_neighbors=5, n_jobs=1,algorithm="kd_tree") # 分类/"balltree"
 
 
 dataMat = dataload.returnMat
