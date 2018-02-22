@@ -2,10 +2,15 @@
 # -*- coding: utf-8 -*-
 from itertools import product
 
+import sys
+import os
+
 import numpy as np
 import matplotlib
 import matplotlib.pyplot as plt
+import pydotplus
 
+from sklearn import tree
 from sklearn import datasets
 from sklearn.tree import DecisionTreeClassifier
 
@@ -14,13 +19,13 @@ from sklearn.tree import DecisionTreeClassifier
 iris = datasets.load_iris()
 X = iris.data[:, [0, 2]]
 y = iris.target
-
 print X,y
 
+
 # 训练模型，限制树的最大深度4
-clf = DecisionTreeClassifier(max_depth=4)
+clf = tree.DecisionTreeClassifier(max_depth=4)
 #拟合模型
-clf.fit(X, y)
+clf = clf.fit(X, y)
 
 
 # 画图
@@ -38,3 +43,7 @@ ax = fig.add_subplot(111)
 ax.contourf(xx, yy, Z, alpha=0.4)
 ax.scatter(X[:, 0], X[:, 1], c=y, alpha=0.8)
 plt.show()
+
+dot_data = tree.export_graphviz(clf, out_file=None)  
+graph = pydotplus.graph_from_dot_data(dot_data) 
+graph.write_pdf("iris.pdf")
